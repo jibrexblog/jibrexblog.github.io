@@ -1,21 +1,32 @@
+<!-- posts/hello-world.html -->
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hello World</title>
-  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../style.css">
 </head>
 <body>
-  <header>
+  <article class="post">
     <h1>Hello World</h1>
-    <nav>
-      <a href="../index.html">← Kembali</a>
-    </nav>
-  </header>
-  <main>
-    <article class="article-card">
-      <p>Selamat datang di blog saya! Ini adalah postingan pertama saya.</p>
-    </article>
-  </main>
+    <p class="meta">Posted on August 1, 2025 — Tags: intro</p>
+    <p>This is your first blog post. Welcome!</p>
+  </article>
+
+  <!-- Giscus Comments -->
+  <script src="https://giscus.app/client.js"
+    data-repo="your-github-username/your-repo"
+    data-repo-id="YOUR_REPO_ID"
+    data-category="General"
+    data-category-id="YOUR_CATEGORY_ID"
+    data-mapping="pathname"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="light"
+    crossorigin="anonymous"
+    async>
+  </script>
 </body>
 </html>
