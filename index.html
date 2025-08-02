@@ -1,28 +1,29 @@
+<!-- index.html -->
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jibrex Blog</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Jibrex Blog</h1>
-    <button id="theme-toggle">🌓</button>
+    <button id="mode-toggle">🌓</button>
+    <input type="text" id="search" placeholder="Search posts..." />
   </header>
 
-  <section id="search-filter">
-    <input type="text" id="search" placeholder="Cari artikel...">
-    <div id="tag-list"></div>
-  </section>
+  <main id="post-list"></main>
 
-  <main id="post-list">
-    <!-- Artikel akan dimuat otomatis di sini -->
-  </main>
+  <nav class="pagination">
+    <button id="prev-page">Prev</button>
+    <span id="page-info"></span>
+    <button id="next-page">Next</button>
+  </nav>
 
   <footer>
-    <p>&copy; 2025 Jibrex • <a href="about.html">Tentang</a></p>
+    <p>&copy; 2025 Jibrex</p>
   </footer>
 
   <script src="app.js"></script>
