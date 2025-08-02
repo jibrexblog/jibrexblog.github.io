@@ -1,54 +1,73 @@
+// Artikel yang tersedia
 const posts = [
   {
     title: "Hello World",
-    url: "posts/hello-world.html",
-    tags: ["intro", "personal"]
+    filename: "hello-world.html",
+    date: "2025-08-01",
+    tags: ["intro", "personal"],
+    excerpt: "Selamat datang di blog saya! Ini adalah artikel pertama saya."
   },
   {
-    title: "Contoh Kedua",
-    url: "posts/contoh-kedua.html",
-    tags: ["tips", "html"]
+    title: "Panduan Web3",
+    filename: "web3-guide.html",
+    date: "2025-08-02",
+    tags: ["web3", "crypto"],
+    excerpt: "Mengenal teknologi Web3 dan bagaimana kamu bisa memulainya."
   }
 ];
 
-function loadPosts() {
-  const container = document.getElementById('posts-list');
-  container.innerHTML = "";
-  posts.forEach(post => {
-    const card = document.createElement('div');
-    card.className = "article-card";
-    card.innerHTML = `<a href="${post.url}"><h2>${post.title}</h2><p>Tags: ${post.tags.join(', ')}</p></a>`;
-    container.appendChild(card);
-  });
-}
+// Tampilkan daftar artikel
+function renderPosts(filterText = "", filterTag = "") {
+  const list = document.getElementById("post-list");
+  list.innerHTML = "";
 
-function searchPosts(keyword) {
-  const filtered = posts.filter(p => 
-    p.title.toLowerCase().includes(keyword.toLowerCase()) ||
-    p.tags.join(" ").toLowerCase().includes(keyword.toLowerCase())
-  );
-  const container = document.getElementById('posts-list');
-  container.innerHTML = "";
+  let filtered = posts.filter(post => {
+    const matchSearch = post.title.toLowerCase().includes(filterText.toLowerCase());
+    const matchTag = filterTag ? post.tags.includes(filterTag) : true;
+    return matchSearch && matchTag;
+  });
+
   filtered.forEach(post => {
-    const card = document.createElement('div');
-    card.className = "article-card";
-    card.innerHTML = `<a href="${post.url}"><h2>${post.title}</h2><p>Tags: ${post.tags.join(', ')}</p></a>`;
-    container.appendChild(card);
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+      <h2><a href="posts/${post.filename}">${post.title}</a></h2>
+      <p>${post.excerpt}</p>
+      <small>${post.date}</small>
+    `;
+    list.appendChild(card);
   });
 }
 
-document.getElementById('search').addEventListener('input', e => {
-  searchPosts(e.target.value);
-});
+// Render tag list
+function renderTags() {
+  const tagList = document.getElementById("tag-list");
+  const uniqueTags = [...new Set(posts.flatMap(p => p.tags))];
 
-document.getElementById('toggle-theme').addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-  localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-});
-
-// Restore theme
-if (localStorage.getItem('theme') === 'dark') {
-  document.body.classList.add('dark');
+  uniqueTags.forEach(tag => {
+    const el = document.createElement("span");
+    el.className = "tag";
+    el.textContent = "#" + tag;
+    el.onclick = () => renderPosts("", tag);
+    tagList.appendChild(el);
+  });
 }
 
-loadPosts();
+// Search handler
+document.getElementById("search").addEventListener("input", (e) => {
+  renderPosts(e.target.value);
+});
+
+// Theme toggle
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+});
+
+// Apply saved theme
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+}
+
+renderTags();
+renderPosts();
