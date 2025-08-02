@@ -1,33 +1,30 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jibrex Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Jibrex Blog</h1>
     <nav>
-      <a href="index.html">Home</a>
+      <a href="index.html">Beranda</a>
       <a href="about.html">Tentang</a>
-      <a href="contact.html">Kontak</a>
+      <button id="toggle-theme">🌓</button>
     </nav>
+    <input type="text" id="search" placeholder="Cari artikel..." />
   </header>
 
-  <main>
-    <h2>Artikel Terbaru</h2>
-    <div class="post-list">
-      <a class="post-item" href="posts/hello-world.html">
-        <h3>Hello World</h3>
-        <p>Ini adalah postingan pertama saya di blog Jibrex.</p>
-      </a>
-    </div>
+  <main id="posts-list">
+    <!-- Artikel akan diisi otomatis oleh app.js -->
   </main>
 
   <footer>
-    <p>&copy; 2025 Jibrex. Dibuat dengan GitHub Pages.</p>
+    <p>&copy; 2025 Jibrex Blog. Dibuat dengan ❤.</p>
   </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
