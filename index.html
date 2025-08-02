@@ -2,27 +2,27 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jibrex Blog</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Jibrex Blog</h1>
-    <nav>
-      <a href="index.html">Beranda</a>
-      <a href="about.html">Tentang</a>
-      <button id="toggle-theme">🌓</button>
-    </nav>
-    <input type="text" id="search" placeholder="Cari artikel..." />
+    <button id="theme-toggle">🌓</button>
   </header>
 
-  <main id="posts-list">
-    <!-- Artikel akan diisi otomatis oleh app.js -->
+  <section id="search-filter">
+    <input type="text" id="search" placeholder="Cari artikel...">
+    <div id="tag-list"></div>
+  </section>
+
+  <main id="post-list">
+    <!-- Artikel akan dimuat otomatis di sini -->
   </main>
 
   <footer>
-    <p>&copy; 2025 Jibrex Blog. Dibuat dengan ❤.</p>
+    <p>&copy; 2025 Jibrex • <a href="about.html">Tentang</a></p>
   </footer>
 
   <script src="app.js"></script>
